@@ -1,0 +1,60 @@
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Email Marketing Locaweb')?></h3></td>          
+        </tr>
+    </table>
+</div>
+
+<ul class="messages">
+    <li class="notice-msg">
+        <ul>
+            <li>Ainda não é cliente? <a href="http://www.locaweb.com.br/produtos/email-marketing/planos.html" target="_blank">Conheça a ferramenta e contrate!</a></li>
+        </ul>
+    </li>
+	<li class="notice-msg">
+        <ul>
+            <li>Siga os passos abaixo para configurar:</li>
+			<li>1) Acesse o <a href="https://emailmarketing.locaweb.com.br" target="_blank">painel da ferramenta.</a></li>
+			<li>2) No menu "Configurações", selecione o item "Chave de acesso para API".</li>
+			<li>3) Copie e cole as informações "ID da conta" e "Chave de acesso" nos campos abaixo.</li>
+			<li>4) Selecione "Verificar".</li>
+        </ul>
+    </li>
+</ul>
+
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">Dados da Conta</h4>	
+	</div>
+	<div class="fieldset fieldset-wide" id="group_fields8">
+		<div class="hor-scroll">
+			<form id="edit_form" name="edit_form" method="post" action="<?php echo $this->getUrl('*/*/verificarConta')?>">	
+				<colgroup class="label"></colgroup>
+				<colgroup class="input-ele"></colgroup>
+				
+				<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+				<table cellspacing="0" class="form-list">
+					<tr>
+						<td class="label"><?php echo $this->__('Id da conta')?> <span class="required">*</span></td>
+						<td class="input-ele"><input class="input-text required-entry" name="EmailMarketing[id_da_conta]" /></td>
+					</tr>
+					<tr>
+						<td class="label"><?php echo $this->__('Chave de acesso')?> <span class="required">*</span></td>
+						<td class="input-ele"><input class="input-text required-entry" name="EmailMarketing[chave_de_acesso]" /></td>
+					</tr>					
+				</table>					
+			</form>
+			<table cellspacing="0" class="form-list">
+				<tr>
+					<td class="label"></td>
+					<td class="input-ele"><button onclick="editForm.submit()" class="scalable save" type="button"><span>Verificar</span></button></td>					
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    var editForm = new varienForm('edit_form');
+</script>

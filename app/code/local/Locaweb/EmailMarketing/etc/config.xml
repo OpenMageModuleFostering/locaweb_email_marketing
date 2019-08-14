@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+/**
+ * Locaweb
+ *
+ * @category    Locaweb
+ * @package     Locaweb_EmailMarketing
+ * @copyright   Copyright (c) 2013 Locaweb (http://www.locaweb.com.br) 
+ */
+-->
+<config>
+    <modules>
+        <Locaweb_EmailMarketing>
+            <version>1.0.0</version>
+        </Locaweb_EmailMarketing>
+    </modules>
+    <global>
+        <models>
+            <EmailMarketing>
+                <class>Locaweb_EmailMarketing_Model</class>
+                <resourceModel>EmailMarketing_mysql4</resourceModel>
+            </EmailMarketing>
+			
+            <EmailMarketing_mysql4>
+                <class>Locaweb_EmailMarketing_Model_Mysql4</class>
+            </EmailMarketing_mysql4>                
+        </models>
+        <blocks>
+            <EmailMarketing>
+                <class>Locaweb_EmailMarketing_Block</class>
+            </EmailMarketing>
+        </blocks>
+		
+		<helpers>
+            <EmailMarketing>
+                <class>Locaweb_EmailMarketing_Helper</class>
+            </EmailMarketing>
+		</helpers>
+		
+        <resources>						
+            <EmailMarketing_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </EmailMarketing_write>
+            <EmailMarketing_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </EmailMarketing_read>            
+        </resources>
+
+		<Locaweb>
+			<groups>
+			<Locaweb_group>
+				<EmailMarketing>Locaweb - Email Marketing</EmailMarketing>				
+			</Locaweb_group>
+			</groups>
+		</Locaweb>        
+    </global>
+
+    <admin>
+        <routers>
+            <EmailMarketing>
+                <use>admin</use>
+                <args>
+                    <module>Locaweb_EmailMarketing</module>
+                    <frontName>Locaweb</frontName>
+                </args>
+            </EmailMarketing>
+        </routers>
+    </admin>
+    
+    <adminhtml>
+        <translate>
+            <modules>
+                <Locaweb_adminhtml>
+                    <files>
+                        <EmailMarketing>Locaweb_EmailMarketing.csv</EmailMarketing>
+                    </files>
+                </Locaweb_adminhtml>
+            </modules>
+        </translate>
+        
+        <menu>
+			<Locaweb>
+				<title>Locaweb</title>
+				<sort_order>1000</sort_order>
+				<children>
+					<Locaweb_adminform translate="title" module="EmailMarketing">
+						<title>Email Marketing</title>
+						<sort_order>1</sort_order>
+						<action>EmailMarketing/adminhtml_EmailMarketing</action>
+					</Locaweb_adminform>
+				</children>
+			</Locaweb>		           
+        </menu>
+        
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <catalog>
+                            <children>
+                                <Locaweb_adminform>
+                                    <title>Locaweb - EmailMarketing</title>
+                                </Locaweb_adminform>
+                            </children>
+                        </catalog>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        
+        <layout>
+            <updates>
+                <sintax>
+                    <file>EmailMarketing.xml</file>
+                </sintax>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>  
+

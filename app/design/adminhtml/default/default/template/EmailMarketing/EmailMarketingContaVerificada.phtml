@@ -1,0 +1,236 @@
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Email Marketing Locaweb')?></h3></td>          
+        </tr>
+    </table>
+</div>
+
+<style>
+#AdicionarListaPop{z-index:10;background-color:#fff;display:none;position:absolute;top:50%;left:30%;margin-left:-50px;margin-top:-100px;padding:10px;width:500px;height:162px;border:1px solid #d0d0d0}
+</style>
+
+<div id="AdicionarListaPop">	
+	<div class="entry-edit">
+		<div class="entry-edit-head">
+			<h4 class="icon-head head-edit-form fieldset-legend">Criar Lista de Contatos</h4>	
+		</div>
+		<div class="fieldset" id="group_fields8">
+			<div class="hor-scroll">
+				<form id="criar_lista_contatos_form" name="criar_lista_contatos_form" method="post" action="<?php echo $this->getUrl('*/*/criarListaContatos')?>">	
+					<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+					<table cellspacing="0" class="form-list">
+						<colgroup class="label"></colgroup>
+						<colgroup class="input-ele"></colgroup>						
+						<tbody>
+							<tr>
+								<td class="label"><?php echo $this->__('Nome')?> <span class="required">*</span></td>
+								<td class="input-ele"><input class="input-text required-entry" name="EmailMarketing_CriarLista[nome_da_lista]" /></td>
+							</tr>
+							<tr>
+								<td class="label"><?php echo $this->__('Descrição')?></td>
+								<td class="input-ele"><input class="input-text" name="EmailMarketing_CriarLista[descricao_da_lista]" /></td>
+							</tr>	
+							<tr>
+								<td class="label"></td>
+								<td class="label"></td>
+							</tr>
+							<tr>
+								<td class="label"></td>
+								<td class="label"></td>
+							</tr>
+							<tr>
+								<td class="label"></td>
+								<td class="label"></td>
+							</tr>
+						</tbody>
+					</table>					
+				</form>
+				<table cellspacing="0" class="form-list">
+					<colgroup class="input-ele"></colgroup>
+					<colgroup class="input-ele"></colgroup>						
+					<tbody>
+						<tr>
+							<td class="a-center input-ele"><button onclick="submitCriarLista()" class="scalable save" type="button"><span>Criar</span></button></td>
+							<td class="a-center input-ele"><button onclick="ocultarDialogCriarLista()" class="scalable back" type="button"><span>Cancelar</span></button></td>					
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="dadosLocawebEmailMarketing">
+	<div id="disableDadosLocawebEmailMarketing" style="display:none; position: absolute;top:0;left:0;width: 100%;height:100%;z-index: 2;opacity:0.4;filter: alpha(opacity =100);background-color: black;"></div>
+	<div class="entry-edit">
+		<div class="entry-edit-head">
+			<h4 class="icon-head head-edit-form fieldset-legend">Dados da Conta</h4>	
+		</div>
+		<div class="fieldset" id="group_fields8">
+			<div class="hor-scroll">			
+				<table cellspacing="0" class="form-list">
+					<colgroup class="label"></colgroup>
+					<colgroup class="label"></colgroup>						
+					<tbody>
+						<tr>
+							<td class="label"><?php echo $this->__('Nome da Conta')?></td>
+							<td class="label"><h4 class="fieldset-legend"><?php echo Mage::getStoreConfig('Locaweb/EmailMarketing/nome_da_conta')?></h4></td>
+						</tr>				
+						<tr>
+							<td class="label"></td>
+							<td class="label"><a href="https://emailmarketing.locaweb.com.br" target="_blank">Acessar o painel da ferramenta.</a></td>
+						</tr>				
+						<tr>
+							<td class="label"><?php echo $this->__('Id da Conta')?></td>
+							<td class="label"><h4 class="fieldset-legend"><?php echo Mage::getStoreConfig('Locaweb/EmailMarketing/id_da_conta')?></h4></td>									
+						</tr>				
+						<tr>
+							<td class="label"></td>
+							<td class="label"><a href="#" onclick="trocarUsuario();">Verificar outra conta</a></td>
+						</tr>
+					</tbody>
+				</table>								
+			</div>
+		</div>
+	</div>
+
+	<div class="entry-edit">
+		<div class="entry-edit-head">
+			<h4 class="icon-head head-edit-form fieldset-legend">Exporta&ccedil;&atilde;o de clientes</h4>	
+		</div>
+		<div class="fieldset" id="group_fields8">
+			Selecione uma lista e exporte seus clientes para o Email Marketing.
+			<br />
+			<div class="hor-scroll">	
+				<form id="edit_form" name="edit_form" method="post" action="<?php echo $this->getUrl('*/*/exportarClientes')?>">	
+					<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+					<table cellspacing="0" class="form-list">
+						<colgroup class="label"></colgroup>
+						<colgroup class="label"></colgroup>						
+						<tbody>
+							<tr>
+								<td class="label"></td>
+								<td class="label"></td>									
+							</tr>
+							<tr>
+								<td class="label"><?php echo $this->__('Listas')?></td>
+								<td class="input-ele">
+									<select id="cmbListas" name="EmailMarketing[id_lista_exportar]" class="validate-select">
+										<option value="">Selecione uma lista...</option>
+										<?php foreach ($dadosListas['items'] as $lista) { ?>
+											<option value="<?php echo $lista['id'] ?>" <?php if (Mage::getStoreConfig('Locaweb/EmailMarketing/lista_selecionada_padrao') == $lista['id']){ echo "selected"; } ?>>
+												<?php echo $lista['name'] ?>
+											</option>
+										<?php } ?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="label"></td>
+								<td class="label"><a href="#" onclick="mostrarDialogCriarLista();">Criar lista</a></td>									
+							</tr>
+							<tr>
+								<td class="label"></td>
+								<td class="input-ele" id="cellBtnExportarLocawebEmailMarketing"><button onclick="submitExport();" class="scalable save" type="button"><span>Exportar para o Email Marketing</span></button></td>						
+							</tr>							
+						</tbody>						
+					</table>
+				</form>
+			</div>
+			<br />
+			Os dados existentes ser&atilde;o sobrescritos a cada exporta&ccedil;&atilde;o, mantendo sua base de clientes atualizada.
+			&Eacute; recomendado realizar a exporta&ccedil;&atilde;o ap&oacute;s novos cadastros, pois essa aç&atilde;o n&atilde;o &eacute; autom&aacute;tica.
+		</div>
+	</div>
+
+	<div class="entry-edit">
+		<div class="entry-edit-head"><h4>Últimas exportações</h4></div>
+		<fieldset class="np">
+			<div class="grid np">
+				<table cellspacing="0" style="border:0;" id="lastExportsLocawebEmailMarketing">
+					<thead>
+						<tr class="headings">
+							<th class="a-center no-link"><span class="nobr">Data e Hora</span></th>
+							<th class="a-center no-link"><span class="nobr">Quantidade de Clientes</span></th>
+							<th class="a-center no-link"><span class="nobr">Lista</span></th>
+							<th class="a-center no-link last"><span class="nobr">Status</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php if (isset($dadosExportacao4)) { ?>
+						<tr class="even pointer">
+							<td class="a-center"><?php echo $dadosExportacao4['data'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao4['quantidade'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao4['nome_lista'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao4['status'] ?></td>
+						</tr>
+						<?php } ?>
+						<?php if (isset($dadosExportacao3)) { ?>
+						<tr class="even pointer">
+							<td class="a-center"><?php echo $dadosExportacao3['data'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao3['quantidade'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao3['nome_lista'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao3['status'] ?></td>
+						</tr>
+						<?php } ?>
+						<?php if (isset($dadosExportacao2)) { ?>
+						<tr class="even pointer">
+							<td class="a-center"><?php echo $dadosExportacao2['data'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao2['quantidade'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao2['nome_lista'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao2['status'] ?></td>
+						</tr>
+						<?php } ?>
+						<?php if (isset($dadosExportacao1)) { ?>
+						<tr class="even pointer">
+							<td class="a-center"><?php echo $dadosExportacao1['data'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao1['quantidade'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao1['nome_lista'] ?></td>
+							<td class="a-center"><?php echo $dadosExportacao1['status'] ?></td>
+						</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>	
+		</fieldset>
+	</div>
+</div>
+<script type="text/javascript">	
+	
+	function submitExport(){	
+		var editForm = new varienForm('edit_form');
+		if(editForm.validator && editForm.validator.validate()){
+			document.getElementById("cellBtnExportarLocawebEmailMarketing").innerHTML = '<h4 class="icon-head head-edit-form fieldset-legend">Aguarde! Exportando dados...</h4>';
+			editForm.submit();
+		}		
+	}
+	function submitCriarLista(){	
+		var criar_lista_contatos_form = new varienForm('criar_lista_contatos_form');	
+		if(criar_lista_contatos_form.validator && criar_lista_contatos_form.validator.validate()){
+			criar_lista_contatos_form.submit();
+		}		
+	}
+	
+	function trocarUsuario(){	
+		var resposta=confirm("Sua conta será desassociada do sistema");
+		if (resposta==true)
+		{
+			window.location="<?php echo $this->getUrl('*/*/trocarUsuario')?>";
+		}
+	}
+	
+	function mostrarDialogCriarLista(){
+		document.getElementById('AdicionarListaPop').style.display='block';
+		document.getElementById('disableDadosLocawebEmailMarketing').style.display='block';	
+		document.body.style.overflow= 'hidden';		
+	}
+	
+	function ocultarDialogCriarLista(){	
+		document.getElementById('AdicionarListaPop').style.display='none';
+		document.getElementById('disableDadosLocawebEmailMarketing').style.display='none';		
+		document.body.style.overflow= 'auto';
+	}
+	
+	
+</script>

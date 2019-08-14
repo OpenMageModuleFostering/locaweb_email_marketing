@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Locaweb_EmailMarketing>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Locaweb_EmailMarketing>
+    </modules>
+</config> 

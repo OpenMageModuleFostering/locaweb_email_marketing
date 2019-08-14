@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+    <EmailMarketing_adminhtml_EmailMarketing_index>
+        <update handle="EmailMarketing_EmailMarketing_index"/>
+        <reference name="content">
+            <block type="adminhtml/template" name="EmailMarketing" template="EmailMarketing/EmailMarketing.phtml"/>
+        </reference>		
+    </EmailMarketing_adminhtml_EmailMarketing_index>
+</layout>

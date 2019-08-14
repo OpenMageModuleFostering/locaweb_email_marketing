@@ -3,7 +3,7 @@
     "type": "magento-module",
     "license": "GPL",
     "homepage": "",
-    "description": "Este módulo permite exportar os cadastros da sua loja virtual direto para uma lista do Email Marketing Locaweb",
+    "description": "This module allows you to export records of your online store directly for a list of Email Marketing Locaweb.",
     "authors": [
     {
         "name": "Locaweb",
