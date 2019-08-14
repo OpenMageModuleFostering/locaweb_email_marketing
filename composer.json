@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Locaweb_Email_Marketing",
+    "type": "magento-module",
+    "license": "GPL",
+    "homepage": "",
+    "description": "Este módulo permite exportar os cadastros da sua loja virtual direto para uma lista do Email Marketing Locaweb",
+    "authors": [
+    {
+        "name": "Locaweb",
+        "email": "julio.gejer@locaweb.com.br"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
