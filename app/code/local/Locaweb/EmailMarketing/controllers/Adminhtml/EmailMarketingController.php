@@ -22,10 +22,23 @@ class Locaweb_EmailMarketing_Adminhtml_EmailMarketingController extends Mage_Adm
 	   }else{
 	   
 			$this->_command    = 'accounts/'.Mage::getStoreConfig('Locaweb/EmailMarketing/id_da_conta');
-			$this->_subCommand = 'lists';            
+			$this->_subCommand = 'lists?per=30&page=1';            
 			$this->_apiKey = Mage::getStoreConfig('Locaweb/EmailMarketing/chave_de_acesso');
 			$dadosListas = $this->call();
-									
+			$result = array();
+			$result = array_merge($dadosListas['items'], $result);
+			
+            if ($dadosListas['page']['total'] > 1){
+				for ($i = 2; $i <= $dadosListas['page']['total']; $i++) {
+					$this->_command    = 'accounts/'.Mage::getStoreConfig('Locaweb/EmailMarketing/id_da_conta');
+					$this->_subCommand = 'lists?per=30&page='.$i;            
+					$this->_apiKey = Mage::getStoreConfig('Locaweb/EmailMarketing/chave_de_acesso');
+					$dadosListas = $this->call();					
+					$result = array_merge($dadosListas['items'], $result);
+				}
+			}			
+			$dadosListas = $result;
+			
 			$block = $this->getLayout()
 			->createBlock('adminhtml/template', 'locaweb-block')
 			->setTemplate('EmailMarketing/EmailMarketingContaVerificada.phtml');

@@ -118,7 +118,7 @@
 								<td class="input-ele">
 									<select id="cmbListas" name="EmailMarketing[id_lista_exportar]" class="validate-select">
 										<option value="">Selecione uma lista...</option>
-										<?php foreach ($dadosListas['items'] as $lista) { ?>
+										<?php foreach ($dadosListas as $lista) { ?>
 											<option value="<?php echo $lista['id'] ?>" <?php if (Mage::getStoreConfig('Locaweb/EmailMarketing/lista_selecionada_padrao') == $lista['id']){ echo "selected"; } ?>>
 												<?php echo $lista['name'] ?>
 											</option>

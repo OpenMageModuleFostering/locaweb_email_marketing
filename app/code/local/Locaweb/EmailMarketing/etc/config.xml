@@ -11,7 +11,7 @@
 <config>
     <modules>
         <Locaweb_EmailMarketing>
-            <version>1.0.0</version>
+            <version>1.0.3</version>
         </Locaweb_EmailMarketing>
     </modules>
     <global>

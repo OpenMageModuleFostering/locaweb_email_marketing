@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>Locaweb_Email_Marketing</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/GPL-3.0">GPL</license>
     <channel>community</channel>
@@ -15,8 +15,8 @@ Com o m&#xF3;dulo de integra&#xE7;&#xE3;o do Email Marketing Locaweb voc&#xEA; p
     <notes>Export customer for the Magento Email Marketing Powerball.</notes>
     <authors><author><name>Locaweb</name><user>Locaweb</user><email>julio.gejer@locaweb.com.br</email></author></authors>
     <date>2013-10-30</date>
-    <time>17:35:31</time>
-    <contents><target name="magelocal"><dir name="Locaweb"><dir name="EmailMarketing"><dir name="Block"><file name="EmailMarketing.php" hash="d41d8cd98f00b204e9800998ecf8427e"/></dir><dir name="Helper"><file name="Data.php" hash="da8bee4cff5c0c7228543963f4fcdd70"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="EmailMarketingController.php" hash="65e20ef31e9525ae93a0a67ec95d2f5c"/></dir></dir><dir name="etc"><file name="config.xml" hash="27f1dc173faa6675d876eadbabbf1f66"/></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="EmailMarketing.xml" hash="3f709cf8fc958eccab7414c7af8f2c35"/></dir><dir name="template"><dir name="EmailMarketing"><file name="EmailMarketing.phtml" hash="f76382b0686b755c5ffd1d5cecf15dd9"/><file name="EmailMarketingContaVerificada.phtml" hash="b75ee42260dc51a427e4711f2b0c20bc"/></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Locaweb_EmailMarketing.xml" hash="ad9da39163661c6c8b25b01cc5a3acf2"/></dir></target></contents>
+    <time>18:43:56</time>
+    <contents><target name="magelocal"><dir name="Locaweb"><dir name="EmailMarketing"><dir name="Block"><file name="EmailMarketing.php" hash="d41d8cd98f00b204e9800998ecf8427e"/></dir><dir name="Helper"><file name="Data.php" hash="da8bee4cff5c0c7228543963f4fcdd70"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="EmailMarketingController.php" hash="ce328ef931d318de6a3643c675a78c47"/></dir></dir><dir name="etc"><file name="config.xml" hash="12a065c741808960e803c400c7a6ea0a"/></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="EmailMarketing.xml" hash="3f709cf8fc958eccab7414c7af8f2c35"/></dir><dir name="template"><dir name="EmailMarketing"><file name="EmailMarketing.phtml" hash="f76382b0686b755c5ffd1d5cecf15dd9"/><file name="EmailMarketingContaVerificada.phtml" hash="0c7d397ccd9ea7739e8dbdb041bec5e1"/></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Locaweb_EmailMarketing.xml" hash="ad9da39163661c6c8b25b01cc5a3acf2"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
 </package>
