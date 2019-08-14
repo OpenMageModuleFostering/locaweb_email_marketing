@@ -127,6 +127,8 @@ class Locaweb_EmailMarketing_Adminhtml_EmailMarketingController extends Mage_Adm
 				Mage::getModel('core/config')->saveConfig('Locaweb/EmailMarketing/chave_de_acesso', $post['EmailMarketing']['chave_de_acesso']);
 				Mage::getModel('core/config')->saveConfig('Locaweb/EmailMarketing/nome_da_conta', $retornoCall['display_name']);
 			
+				Mage::app()->getCacheInstance()->cleanType('config');
+			
 				$message = $this->__('Conta verificada com sucesso!');
 				Mage::getSingleton('adminhtml/session')->addSuccess($message);
 			}   
@@ -203,6 +205,8 @@ class Locaweb_EmailMarketing_Adminhtml_EmailMarketingController extends Mage_Adm
 				
 				Mage::getModel('core/config')->saveConfig('Locaweb/EmailMarketing/lista_selecionada_padrao', $post['EmailMarketing']['id_lista_exportar']);
 				
+				Mage::app()->getCacheInstance()->cleanType('config');
+				
 				$message = $this->__('Clientes exportados com sucesso!');
 				Mage::getSingleton('adminhtml/session')->addSuccess($message);
 			}
@@ -234,6 +238,8 @@ class Locaweb_EmailMarketing_Adminhtml_EmailMarketingController extends Mage_Adm
 		
 		Mage::getModel('core/config')->saveConfig('Locaweb/EmailMarketing/lista_selecionada_padrao', '');
 		
+		Mage::app()->getCacheInstance()->cleanType('config');
+		
 		$this->_redirect('*/*');
 	}
 	
@@ -256,6 +262,8 @@ class Locaweb_EmailMarketing_Adminhtml_EmailMarketingController extends Mage_Adm
 																			
 			if (isset($retornoCall['id'])){		
 				Mage::getModel('core/config')->saveConfig('Locaweb/EmailMarketing/lista_selecionada_padrao', $retornoCall['id']);
+				Mage::app()->getCacheInstance()->cleanType('config');
+				
 				$message = $this->__('Lista criada com sucesso!');
 				Mage::getSingleton('adminhtml/session')->addSuccess($message);
 			}   
@@ -344,7 +352,9 @@ class Locaweb_EmailMarketing_Adminhtml_EmailMarketingController extends Mage_Adm
 					Mage::getSingleton('adminhtml/session')->addError('Servidor indisponível no momento. Por favor, tente novamente mais tarde.');                                 
                     break;
             }
- 
+			
+			Mage::log ('### [Locaweb] Resposta do Servidor: ' . $response, null, 'EmailMarketing.log');
+			
             $data = Mage::helper('core')->jsonDecode($response);
             if (isset($data['ErrorCode'])) {
                 throw new Exception($data['Message'], $data['ErrorCode']);
