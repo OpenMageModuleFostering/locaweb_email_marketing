@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Locaweb_Email_Marketing",
+    "name": "OpenMageModuleFostering\/Locaweb_Email_Marketing",
     "type": "magento-module",
     "license": "GPL",
     "homepage": "",
     "description": "This module allows you to export records of your online store directly for a list of Email Marketing Locaweb.",
     "authors": [
-    {
-        "name": "Locaweb",
-        "email": "julio.gejer@locaweb.com.br"
-    }
-],
+        {
+            "name": "Locaweb",
+            "email": "julio.gejer@locaweb.com.br"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
